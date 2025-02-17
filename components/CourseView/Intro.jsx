@@ -1,49 +1,16 @@
 import { View, Text, Image, Pressable } from "react-native";
-import React, { useContext, useState } from "react";
+import React from "react";
 import { imageAssets } from "../../constants/Option";
 import { Ionicons } from "@expo/vector-icons";
 import Colors from "../../constants/Colors";
-import Button from "../Shared/Button";
 import { useRouter } from "expo-router";
-import { UserDetailContext } from "../../context/userDetailContext";
-import { doc, updateDoc } from "firebase/firestore";
-import { db } from "../../config/firebaseConfig";
 
 export default function Intro({ course, enroll }) {
   const router = useRouter();
-  const [loading, setLoading] = useState(false);
-  const { userDetail, setUserDetail } = useContext(UserDetailContext);
-
-  const onEnrollCourse = async () => {
-    setLoading(true);
-
-    try {
-      const data = {
-        ...course,
-        createdBy: userDetail?.email,
-        createdOn: new Date(),
-        enrolled: true,
-      };
-      const docId = Date.now().toString();
-      await updateDoc(doc(db, "courses", docId), data);
-      router.replace({
-        pathname: "/courseView/" + docId,
-        params: {
-          courseParams: JSON.stringify(data),
-          enroll: false,
-        },
-      });
-      setLoading(false);
-    } catch (error) {
-      console.log(error.message);
-      setLoading(false);
-    }
-  };
-
   return (
     <View>
       <Pressable
-        onPress={() => router.replace("/home")}
+        onPress={() => router.back()}
         style={{
           position: "absolute",
           margin: 20,
@@ -59,7 +26,7 @@ export default function Intro({ course, enroll }) {
           height: 280,
         }}
       />
-      <View style={{ padding: 20 }}>
+      <View style={{ paddingHorizontal: 20, marginTop: 20 }}>
         <Text style={{ fontFamily: "outfit-bold", fontSize: 20 }}>
           {course?.courseTitle}
         </Text>
@@ -98,13 +65,13 @@ export default function Intro({ course, enroll }) {
         >
           {course?.description}
         </Text>
-        {enroll == "true" && (
+        {/* {enroll == "true" && (
           <Button
             text={"Ikuti materi"}
             loading={loading}
             onPress={() => onEnrollCourse()}
           />
-        )}
+        )} */}
       </View>
     </View>
   );

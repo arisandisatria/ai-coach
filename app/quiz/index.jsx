@@ -1,7 +1,6 @@
 import {
   View,
   Text,
-  Image,
   Pressable,
   Dimensions,
   TouchableOpacity,
@@ -63,15 +62,7 @@ export default function Quiz() {
   };
 
   return (
-    <View>
-      <Image
-        source={require("./../../assets/images/wave.png")}
-        style={{
-          position: "absolute",
-          width: "100%",
-          height: 700,
-        }}
-      />
+    <View style={{ backgroundColor: Colors.WHITE, flex: 1 }}>
       <View style={{ position: "absolute", width: "100%", padding: 25 }}>
         <View
           style={{
@@ -82,13 +73,13 @@ export default function Quiz() {
           }}
         >
           <Pressable onPress={() => router.back()}>
-            <Ionicons name="arrow-back" size={24} color={Colors.WHITE} />
+            <Ionicons name="arrow-back" size={24} color={Colors.PRIMARY} />
           </Pressable>
           <Text
             style={{
               fontFamily: "outfit-bold",
               fontSize: 18,
-              color: Colors.WHITE,
+              color: Colors.PRIMARY,
             }}
           >
             {currentPage + 1} dari {quiz?.length}
@@ -103,7 +94,7 @@ export default function Quiz() {
           <Progress.Bar
             progress={getProgress(currentPage)}
             width={Dimensions.get("screen").width * 0.87}
-            color={Colors.WHITE}
+            color={Colors.PRIMARY}
             height={10}
           />
         </View>
@@ -114,7 +105,7 @@ export default function Quiz() {
             backgroundColor: Colors.WHITE,
             marginTop: 30,
             height: Dimensions.get("screen").height * 0.65,
-            elevation: 1,
+            elevation: 4,
             borderRadius: 20,
           }}
         >

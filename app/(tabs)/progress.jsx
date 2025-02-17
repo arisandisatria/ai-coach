@@ -1,24 +1,14 @@
-import {
-  View,
-  Text,
-  Image,
-  FlatList,
-  ActivityIndicator,
-  TouchableOpacity,
-} from "react-native";
+import { View, Text, FlatList, ActivityIndicator } from "react-native";
 import React, { useContext, useState, useEffect } from "react";
 import { UserDetailContext } from "../../context/userDetailContext";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { db } from "../../config/firebaseConfig";
 import CourseProgressCard from "../../components/Shared/CourseProgressCard";
 import Colors from "../../constants/Colors";
-import { useRouter } from "expo-router";
-
 export default function Progress() {
   const [courseList, setCourseList] = useState([]);
   const [loading, setLoading] = useState(false);
   const { userDetail, setUserDetail } = useContext(UserDetailContext);
-  const router = useRouter();
 
   useEffect(() => {
     userDetail && getCourseList();
@@ -40,24 +30,16 @@ export default function Progress() {
 
   return (
     <FlatList
-      style={{ backgroundColor: Colors.WHITE, flex: 1 }}
+      style={{ backgroundColor: Colors.WHITE, flex: 1, marginBottom: 50 }}
       data={[]}
       ListHeaderComponent={
         <View>
-          <Image
-            source={require("./../../assets/images/wave.png")}
-            style={{
-              position: "absolute",
-              width: "100%",
-              height: 700,
-            }}
-          />
           <View style={{ width: "100%", position: "relative", padding: 20 }}>
             <Text
               style={{
                 fontFamily: "outfit-bold",
                 fontSize: 25,
-                color: Colors.WHITE,
+                color: Colors.BLACK,
                 marginBottom: 20,
                 textAlign: "center",
               }}
@@ -67,7 +49,7 @@ export default function Progress() {
             {loading ? (
               <ActivityIndicator
                 size={"large"}
-                color={Colors.WHITE}
+                color={Colors.PRIMARY}
                 style={{ marginTop: 100 }}
               />
             ) : (
@@ -77,19 +59,11 @@ export default function Progress() {
                 refreshing={loading}
                 data={courseList}
                 renderItem={({ item, index }) => (
-                  <TouchableOpacity
+                  <CourseProgressCard
                     key={index + 1}
-                    onPress={() => {
-                      router.push({
-                        pathname: "/courseView/" + item.docId,
-                        params: {
-                          courseParams: JSON.stringify(item),
-                        },
-                      });
-                    }}
-                  >
-                    <CourseProgressCard item={item} width={"96%"} />
-                  </TouchableOpacity>
+                    item={item}
+                    width={"96%"}
+                  />
                 )}
               />
             )}

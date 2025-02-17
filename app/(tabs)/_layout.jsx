@@ -1,4 +1,3 @@
-import { View, Text } from "react-native";
 import React from "react";
 import { Tabs } from "expo-router";
 import Ionicons from "@expo/vector-icons/Ionicons";
@@ -8,31 +7,32 @@ export default function TabLayout() {
     <Tabs
       screenOptions={{
         headerShown: false,
+        tabBarShowLabel: false,
+        tabBarIconStyle: {
+          height: "100%",
+          width: "100%",
+        },
+        tabBarStyle: {
+          height: 60,
+          elevation: 0,
+          position: "absolute",
+        },
       }}
     >
       <Tabs.Screen
         name="home"
         options={{
-          tabBarIcon: ({ color, size }) => (
-            <Ionicons name="home-outline" size={size} color={color} />
+          tabBarIcon: ({ color }) => (
+            <Ionicons name="home-outline" size={36} color={color} />
           ),
           tabBarLabel: "Home",
-        }}
-      />
-      <Tabs.Screen
-        name="explore"
-        options={{
-          tabBarIcon: ({ color, size }) => (
-            <Ionicons name="search-outline" size={size} color={color} />
-          ),
-          tabBarLabel: "Explore",
         }}
       />
       <Tabs.Screen
         name="progress"
         options={{
           tabBarIcon: ({ color, size }) => (
-            <Ionicons name="analytics-outline" size={size} color={color} />
+            <Ionicons name="analytics-outline" size={36} color={color} />
           ),
           tabBarLabel: "Progress",
         }}
@@ -41,7 +41,7 @@ export default function TabLayout() {
         name="profile"
         options={{
           tabBarIcon: ({ color, size }) => (
-            <Ionicons name="person-circle-outline" size={size} color={color} />
+            <Ionicons name="person-circle-outline" size={36} color={color} />
           ),
           tabBarLabel: "Profile",
         }}

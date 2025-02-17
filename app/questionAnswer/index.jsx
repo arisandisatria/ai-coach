@@ -1,11 +1,4 @@
-import {
-  View,
-  Text,
-  Image,
-  FlatList,
-  Pressable,
-  StyleSheet,
-} from "react-native";
+import { View, Text, FlatList, Pressable, StyleSheet } from "react-native";
 import React, { useState } from "react";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import Colors from "../../constants/Colors";
@@ -29,21 +22,11 @@ export default function QuestionAnswer() {
       data={[]}
       ListHeaderComponent={
         <View>
-          <Image
-            source={require("./../../assets/images/wave.png")}
-            style={{
-              position: "absolute",
-              width: "100%",
-              height: 700,
-            }}
-          />
-
           <View
             style={{
               position: "relative",
               width: "100%",
               padding: 20,
-              marginTop: 35,
             }}
           >
             <View
@@ -55,14 +38,14 @@ export default function QuestionAnswer() {
               }}
             >
               <Pressable onPress={() => router.back()}>
-                <Ionicons name="arrow-back" size={30} color={Colors.WHITE} />
+                <Ionicons name="arrow-back" size={30} color={Colors.PRIMARY} />
               </Pressable>
               <Text
                 style={{
                   fontFamily: "outfit-bold",
                   fontSize: 28,
                   textAlign: "center",
-                  color: Colors.WHITE,
+                  color: Colors.PRIMARY,
                 }}
               >
                 Q&A
@@ -71,7 +54,7 @@ export default function QuestionAnswer() {
             <Text
               style={{
                 fontFamily: "outfit",
-                color: Colors.WHITE,
+                color: Colors.PRIMARY,
                 fontSize: 18,
                 marginVertical: 10,
               }}

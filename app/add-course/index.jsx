@@ -71,17 +71,7 @@ export default function AddCourse() {
 
       const resArray = JSON.parse(textResponse);
 
-      console.log(resArray);
-
-      if (
-        !Array.isArray(resArray) ||
-        resArray.length === 0 ||
-        !resArray[0].courses
-      ) {
-        throw new Error("Response does not contain valid courses");
-      }
-
-      const courses = resArray[0].courses;
+      const courses = resArray.courses;
 
       for (const course of courses) {
         const docId = Date.now().toString();
@@ -154,11 +144,7 @@ export default function AddCourse() {
           loading={loading}
         />
 
-        <View
-          style={{
-            marginVertical: 10,
-          }}
-        >
+        <View>
           <View
             style={{
               display: "flex",

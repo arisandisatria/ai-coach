@@ -72,6 +72,7 @@ export default function CourseList({
                   fontFamily: "outfit-bold",
                   fontSize: 14,
                   marginTop: 10,
+                  color: Colors.WHITE,
                 }}
               >
                 {item?.courseTitle}
@@ -85,10 +86,11 @@ export default function CourseList({
                   marginTop: 5,
                 }}
               >
-                <Ionicons name="book-outline" size={20} color="black" />
+                <Ionicons name="book-outline" size={20} color={Colors.WHITE} />
                 <Text
                   style={{
                     fontFamily: "outfit",
+                    color: Colors.WHITE,
                   }}
                 >
                   {item?.chapters?.length} bab
@@ -105,9 +107,10 @@ export default function CourseList({
 const styles = StyleSheet.create({
   courseContainer: {
     padding: 10,
-    backgroundColor: Colors.BG_GRAY,
+    backgroundColor: Colors.PRIMARY,
     margin: 6,
     borderRadius: 15,
     width: 280,
+    height: 280,
   },
 });

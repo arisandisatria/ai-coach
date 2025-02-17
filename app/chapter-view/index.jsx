@@ -1,5 +1,5 @@
 import { View, Text, Dimensions, StyleSheet, ScrollView } from "react-native";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import * as Progress from "react-native-progress";
 import Colors from "../../constants/Colors";

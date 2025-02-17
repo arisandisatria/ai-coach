@@ -3,9 +3,11 @@ import React, { useContext } from "react";
 import { UserDetailContext } from "./../../context/userDetailContext";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import Colors from "../../constants/Colors";
+import { useRouter } from "expo-router";
 
 export default function Header() {
   const { userDetail, setUserDetail } = useContext(UserDetailContext);
+  const router = useRouter();
 
   return (
     <View
@@ -21,7 +23,7 @@ export default function Header() {
           style={{
             fontFamily: "outfit-bold",
             fontSize: 25,
-            color: Colors.WHITE,
+            color: Colors.BLACK,
           }}
         >
           Halo, {userDetail?.name}
@@ -30,14 +32,14 @@ export default function Header() {
           style={{
             fontFamily: "outfit",
             fontSize: 14,
-            color: Colors.WHITE,
+            color: Colors.BLACK,
           }}
         >
           Ayo mulai belajar!
         </Text>
       </View>
-      <TouchableOpacity>
-        <Ionicons name="settings-outline" size={32} color={Colors.WHITE} />
+      <TouchableOpacity onPress={() => router.push("/(tabs)/profile")}>
+        <Ionicons name="settings-outline" size={32} color={Colors.BLACK} />
       </TouchableOpacity>
     </View>
   );

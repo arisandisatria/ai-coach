@@ -1,12 +1,9 @@
-import { View, Text, FlatList, TouchableOpacity } from "react-native";
+import { View, Text, FlatList } from "react-native";
 import React from "react";
 import Colors from "../../constants/Colors";
 import CourseProgressCard from "../Shared/CourseProgressCard";
-import { useRouter } from "expo-router";
 
 export default function CourseProgress({ courseList }) {
-  const router = useRouter();
-
   return (
     <View
       style={{
@@ -17,7 +14,7 @@ export default function CourseProgress({ courseList }) {
         style={{
           fontFamily: "outfit-bold",
           fontSize: 20,
-          color: Colors.WHITE,
+          color: Colors.BLACK,
         }}
       >
         Perkembangan Belajar
@@ -28,19 +25,12 @@ export default function CourseProgress({ courseList }) {
         showsHorizontalScrollIndicator={false}
         data={courseList}
         renderItem={({ item, index }) => (
-          <TouchableOpacity
+          <CourseProgressCard
             key={index + 1}
-            onPress={() => {
-              router.push({
-                pathname: "/courseView/" + item.docId,
-                params: {
-                  courseParams: JSON.stringify(item),
-                },
-              });
-            }}
-          >
-            <CourseProgressCard item={item} width={280} />
-          </TouchableOpacity>
+            item={item}
+            width={280}
+            height={300}
+          />
         )}
       />
     </View>

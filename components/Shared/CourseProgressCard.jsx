@@ -1,8 +1,10 @@
-import { View, Text, Image } from "react-native";
+import { View, Text, Image, TouchableOpacity } from "react-native";
 import React from "react";
 import { imageAssets } from "../../constants/Option";
 import Colors from "../../constants/Colors";
 import * as Progress from "react-native-progress";
+import { Ionicons } from "@expo/vector-icons";
+import { useRouter } from "expo-router";
 
 export default function CourseProgressCard({ item, width }) {
   const getCompletedChapters = (course) => {
@@ -10,13 +12,22 @@ export default function CourseProgressCard({ item, width }) {
     const percentage = completedChapters / course?.chapters?.length;
     return percentage;
   };
+  const router = useRouter();
 
   return (
-    <View
+    <TouchableOpacity
+      onPress={() => {
+        router.push({
+          pathname: "/courseView/" + item.docId,
+          params: {
+            courseParams: JSON.stringify(item),
+          },
+        });
+      }}
       style={{
         margin: 7,
         padding: 15,
-        backgroundColor: Colors.WHITE,
+        backgroundColor: Colors.PRIMARY,
         borderRadius: 15,
         width: width,
         elevation: 1,
@@ -44,16 +55,32 @@ export default function CourseProgressCard({ item, width }) {
               fontFamily: "outfit-bold",
               fontSize: 16,
               flexWrap: "wrap",
+              color: Colors.WHITE,
             }}
           >
             {item?.courseTitle}
           </Text>
-          <Text style={{ fontFamily: "outfit", fontSize: 14 }}>
-            {item?.chapters?.length} bab
-          </Text>
+          <View
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              gap: 5,
+              alignItems: "center",
+            }}
+          >
+            <Ionicons name="book-outline" size={16} color={Colors.WHITE} />
+            <Text
+              style={{
+                fontFamily: "outfit",
+                fontSize: 14,
+                color: Colors.WHITE,
+              }}
+            >
+              {item?.chapters?.length} bab
+            </Text>
+          </View>
         </View>
       </View>
-
       <View
         style={{
           marginTop: 10,
@@ -62,17 +89,19 @@ export default function CourseProgressCard({ item, width }) {
         <Progress.Bar
           progress={getCompletedChapters(item)}
           width={width - 30}
+          color={Colors.WHITE}
         />
         <Text
           style={{
             fontFamily: "outfit",
-            marginTop: 2,
+            marginTop: 4,
+            color: Colors.WHITE,
           }}
         >
           {item?.completedChapter?.length ?? 0} dari {item?.chapters?.length}{" "}
           bab selesai
         </Text>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 }

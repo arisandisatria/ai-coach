@@ -23,7 +23,9 @@ export default function Chapters({ course }) {
   return (
     <View
       style={{
-        padding: 20,
+        paddingHorizontal: 20,
+        marginTop: 15,
+        marginBottom: 25,
       }}
     >
       <Text style={{ fontFamily: "outfit-bold", fontSize: 20 }}>Bab</Text>

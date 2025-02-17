@@ -2,7 +2,6 @@ import Colors from "@/constants/Colors";
 import {
   View,
   Text,
-  Image,
   TextInput,
   StyleSheet,
   TouchableOpacity,
@@ -62,13 +61,6 @@ export default function SignUp() {
         padding: 25,
       }}
     >
-      {/* <Image
-        source={require("./../../assets/images/logo.png")}
-        style={{
-          width: 180,
-          height: 180,
-        }}
-      /> */}
       <Text
         style={{
           fontSize: 30,
