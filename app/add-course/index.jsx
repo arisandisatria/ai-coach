@@ -65,15 +65,14 @@ export default function AddCourse() {
 
     try {
       const aiRes = await generateCourseAiModel.sendMessage(PROMPT);
-      console.log("AI Raw Response:", aiRes);
 
-      const textResponse = aiRes.response.text();
+      const resp = JSON.parse(aiRes.response.text());
+      console.log("resp:", resp);
 
-      const resArray = JSON.parse(textResponse);
+      const courses = resp.courses;
+      console.log("courses:", courses);
 
-      const courses = resArray.courses;
-
-      for (const course of courses) {
+      courses?.forEach(async (course) => {
         const docId = Date.now().toString();
         await setDoc(doc(db, "courses", docId), {
           ...course,
@@ -81,7 +80,17 @@ export default function AddCourse() {
           createdBy: userDetail.email,
           docId: docId,
         });
-      }
+      });
+
+      // for (const course of courses) {
+      //   const docId = Date.now().toString();
+      //   await setDoc(doc(db, "courses", docId), {
+      //     ...course,
+      //     createdOn: new Date(),
+      //     createdBy: userDetail.email,
+      //     docId: docId,
+      //   });
+      // }
 
       router.push("/(tabs)/home");
     } catch (error) {
@@ -144,52 +153,49 @@ export default function AddCourse() {
           loading={loading}
         />
 
-        <View>
-          <View
-            style={{
-              display: "flex",
-              flexDirection: "row",
-              flexWrap: "wrap",
-              gap: 10,
-              marginTop: 6,
-            }}
-          >
-            {topics && (
+        <View
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            flexWrap: "wrap",
+            gap: 8,
+            marginVertical: 6,
+          }}
+        >
+          {topics && (
+            <Text
+              style={{
+                fontFamily: "outfit",
+                fontSize: 16,
+                marginVertical: 4,
+              }}
+            >
+              Pilih topik yang akan ditambahkan ke materi
+            </Text>
+          )}
+          {topics?.map((topic, index) => (
+            <Pressable
+              key={index + 1}
+              disabled={loading}
+              onPress={() => onTopicSelect(topic)}
+            >
               <Text
                 style={{
-                  fontFamily: "outfit",
-                  fontSize: 16,
+                  padding: 7,
+                  borderWidth: 0.4,
+                  borderRadius: 99,
+                  paddingHorizontal: 15,
+                  borderColor: Colors.PRIMARY,
+                  backgroundColor: isTopicSelected(topic)
+                    ? Colors.PRIMARY
+                    : null,
+                  color: isTopicSelected(topic) ? Colors.WHITE : Colors.PRIMARY,
                 }}
               >
-                Pilih topik yang akan ditambahkan ke materi
+                {topic}
               </Text>
-            )}
-            {topics?.map((topic, index) => (
-              <Pressable
-                key={index + 1}
-                disabled={loading}
-                onPress={() => onTopicSelect(topic)}
-              >
-                <Text
-                  style={{
-                    padding: 7,
-                    borderWidth: 0.4,
-                    borderRadius: 99,
-                    paddingHorizontal: 15,
-                    borderColor: Colors.PRIMARY,
-                    backgroundColor: isTopicSelected(topic)
-                      ? Colors.PRIMARY
-                      : null,
-                    color: isTopicSelected(topic)
-                      ? Colors.WHITE
-                      : Colors.PRIMARY,
-                  }}
-                >
-                  {topic}
-                </Text>
-              </Pressable>
-            ))}
-          </View>
+            </Pressable>
+          ))}
         </View>
 
         {selectedTopics?.length > 0 && (

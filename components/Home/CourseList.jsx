@@ -71,7 +71,7 @@ export default function CourseList({
                 style={{
                   fontFamily: "outfit-bold",
                   fontSize: 14,
-                  marginTop: 10,
+                  marginTop: 6,
                   color: Colors.WHITE,
                 }}
               >
@@ -83,7 +83,7 @@ export default function CourseList({
                   flexDirection: "row",
                   gap: 5,
                   alignItems: "center",
-                  marginTop: 5,
+                  marginTop: 4,
                 }}
               >
                 <Ionicons name="book-outline" size={20} color={Colors.WHITE} />
@@ -111,6 +111,6 @@ const styles = StyleSheet.create({
     margin: 6,
     borderRadius: 15,
     width: 280,
-    height: 280,
+    maxHeight: 280,
   },
 });

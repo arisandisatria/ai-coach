@@ -1,7 +1,6 @@
-import { View, Text, Image, FlatList, TouchableOpacity } from "react-native";
+import { Text, Image, FlatList, TouchableOpacity } from "react-native";
 import React from "react";
 import Colors from "../../constants/Colors";
-import { Ionicons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
 
 export default function CourseListGrid({ courseList, option }) {
@@ -38,12 +37,6 @@ export default function CourseListGrid({ courseList, option }) {
             elevation: 1,
           }}
         >
-          <Ionicons
-            name="checkmark-circle"
-            size={24}
-            color={Colors.GRAY}
-            style={{ position: "absolute", top: 15, right: 15 }}
-          />
           <Image
             source={option?.icon}
             style={{

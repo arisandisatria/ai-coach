@@ -111,7 +111,7 @@ export default function Quiz() {
         >
           <Text
             style={{
-              fontSize: 20,
+              fontSize: 18,
               fontFamily: "outfit-bold",
               textAlign: "center",
               marginBottom: 10,
@@ -130,7 +130,7 @@ export default function Quiz() {
                 padding: 15,
                 borderWidth: 1,
                 borderRadius: 15,
-                marginTop: 10,
+                marginTop: 6,
                 backgroundColor:
                   selectedOption == index ? Colors.LIGHT_GREEN : null,
                 borderColor:
@@ -140,7 +140,7 @@ export default function Quiz() {
               <Text
                 style={{
                   fontFamily: "outfit",
-                  fontSize: 16,
+                  fontSize: 14,
                 }}
               >
                 {item}

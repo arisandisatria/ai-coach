@@ -53,19 +53,20 @@ export default function QuizSummary() {
                 textAlign: "center",
                 fontFamily: "outfit-bold",
                 fontSize: 25,
-                color: Colors.WHITE,
+                color: Colors.BLACK,
               }}
             >
               Hasil Quiz
             </Text>
             <View
               style={{
-                backgroundColor: Colors.WHITE,
+                backgroundColor: Colors.PRIMARY,
                 padding: 20,
                 borderRadius: 20,
                 marginTop: 60,
                 display: "flex",
                 alignItems: "center",
+                elevation: 4,
               }}
             >
               <Image
@@ -76,14 +77,20 @@ export default function QuizSummary() {
                   marginTop: -60,
                 }}
               />
-              <Text style={{ fontFamily: "outfit-bold", fontSize: 24 }}>
+              <Text
+                style={{
+                  fontFamily: "outfit-bold",
+                  fontSize: 24,
+                  color: Colors.WHITE,
+                }}
+              >
                 {getPercentageMark() > 60 ? "Selamat!" : "Coba lagi :("}
               </Text>
               <Text
                 style={{
                   fontFamily: "outfit",
                   fontSize: 16,
-                  color: Colors.GRAY,
+                  color: Colors.WHITE,
                 }}
               >
                 Jawaban benar {getPercentageMark()}%
@@ -111,7 +118,7 @@ export default function QuizSummary() {
               </View>
             </View>
             <Button
-              text={"Kembali ke Home"}
+              text={"Kembali ke halaman utama"}
               onPress={() => router.replace("/(tabs)/home")}
             />
             <View style={{ marginTop: 25, flex: 1 }}>
@@ -127,7 +134,7 @@ export default function QuizSummary() {
                       style={{
                         padding: 10,
                         borderWidth: 1,
-                        marginTop: 5,
+                        marginTop: 8,
                         borderRadius: 15,
                         backgroundColor:
                           quizItem?.isCorrect == true
@@ -161,5 +168,6 @@ const styles = StyleSheet.create({
   resultText: {
     fontFamily: "outfit",
     fontSize: 20,
+    color: Colors.WHITE,
   },
 });
