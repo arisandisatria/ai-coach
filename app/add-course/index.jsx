@@ -125,8 +125,8 @@ export default function AddCourse() {
             color: Colors.GRAY,
           }}
         >
-          Materi apa yang mau kamu buat? (cth. Learn python, Digital Marketing,
-          10th Science Chapters, dll...)
+          Materi apa yang mau kamu buat? (cth. belajar biologi, pemrograman,
+          sejarah ekonomi, dll...)
         </Text>
 
         <TextInput
