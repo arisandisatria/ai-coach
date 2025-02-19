@@ -1,15 +1,21 @@
 import { View, Text, Image, StyleSheet, FlatList } from "react-native";
 import React, { useEffect, useState } from "react";
 import { useLocalSearchParams, useRouter } from "expo-router";
+import dedent from "dedent";
 import Colors from "../../constants/Colors";
 import Button from "../../components/Shared/Button";
+import { generateNewQuizAiModel } from "../../config/AiModel";
+import { arrayUnion, doc, updateDoc } from "firebase/firestore";
+import { db } from "../../config/firebaseConfig";
 
 export default function QuizSummary() {
-  const { quizResultParam } = useLocalSearchParams();
+  const { quizResultParam, quizDocId, quizQuiz, quizCourseTitle } =
+    useLocalSearchParams();
   const quizResult = JSON.parse(quizResultParam);
   const [correctAns, setCorrectAns] = useState(0);
   const [totalQuestion, setTotalQuestion] = useState(0);
   const router = useRouter();
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     quizResult && calculateResult();
@@ -29,6 +35,36 @@ export default function QuizSummary() {
 
   const getPercentageMark = () => {
     return ((correctAns / totalQuestion) * 100).toFixed(0);
+  };
+
+  const regenerateQuiz = async () => {
+    setLoading(true);
+    const PROMPT = dedent`
+    - Buatkan 10 quiz yang berbeda daripada ${quizQuiz}
+    - Buat pertanyaan tersebut berdasarkan judul ${quizCourseTitle}
+    - Buat juga 4 opsi jawaban yang berbeda
+    - Hasilkan outputnya seperti contoh ini: "quiz": [
+              {
+                "question": "Apa itu variabel?",
+                "options": ["Penyimpanan data", "Sebuah fungsi", "Tipe data", "Loop"],
+                "correctAns": "Penyimpanan data"
+              }
+            ],
+    `;
+
+    try {
+      const regenQuiz = await generateNewQuizAiModel.sendMessage(PROMPT);
+      const textResponse = JSON.parse(regenQuiz.response.text());
+
+      await updateDoc(doc(db, "courses", quizDocId), {
+        quiz: textResponse.quiz,
+      });
+      router.replace("/(tabs)/home");
+    } catch (error) {
+      console.log(error.message);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -117,10 +153,19 @@ export default function QuizSummary() {
                 </View>
               </View>
             </View>
+
             <Button
               text={"Kembali ke halaman utama"}
               onPress={() => router.replace("/(tabs)/home")}
             />
+
+            <Button
+              text={"Perbarui quiz"}
+              type="outline"
+              loading={loading}
+              onPress={() => regenerateQuiz()}
+            />
+
             <View style={{ marginTop: 25, flex: 1 }}>
               <Text style={{ fontFamily: "outfit-bold", fontSize: 22 }}>
                 Ringkasan

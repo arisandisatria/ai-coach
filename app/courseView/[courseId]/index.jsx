@@ -37,8 +37,6 @@ export default function CourseView() {
     const docRef = await getDoc(doc(db, "courses", courseId));
     const courseData = docRef.data();
 
-    console.log("Courses ========>", docRef);
-
     setCourse(courseData);
   };
 

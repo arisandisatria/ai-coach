@@ -3,7 +3,7 @@ import dedent from "dedent";
 export default {
   IDEA: dedent`: Anda sebagai pengajar terbaik
     - Pengguna ingin mempelajari tentang topik
-    - Hasilkan 7-10 judul kursus untuk belajar (pendek)
+    - Hasilkan 5-7 judul kursus untuk belajar (pendek)
     - Pastikan itu terkait dengan deskripsi
     - Output akan berupa ARRAY String dalam FORMAT JSON saja
     - Jangan menambahkan teks biasa apa pun dalam output
@@ -11,58 +11,61 @@ export default {
   // - Chapter Explain in HTML Form, (Code example if required), add line break if required
   COURSE: dedent`: Anda sebagai pengajar terbaik
     - Pengguna ingin mempelajari semua topik
-    - Hasilkan kursus dengan nama kursus, deskripsi, dan 10 bab di setiap kursus
+    - Hasilkan kursus dengan nama kursus, deskripsi, dan 5/7 bab di setiap kursus
     - Pastikan untuk menambahkan bab
-    - Buat daftar konten disetiap bab beserta deskripsi dalam 5 hingga 10 baris
+    - Buat daftar konten disetiap bab beserta deskripsi dalam 5 hingga 8 baris
     - Jangan hanya menjelaskan tentang babnya, jelaskan secara detail dengan contoh
     - Juga buat kursus mudah, sedang dan lanjutan tergantung pada topiknya
     - Tambahkan gambar banner kursus dari ('/banner1.png','/banner2.png','/banner3.png','/banner4.png','/banner5.png','/banner6.png'), pilih secara acak
     - Jelaskan isi bab sebagai tutorial terperinci dengan daftar konten
     - Generate 10 Quizz, 10 Flashcard and 10 Questions answer
     - Tag setiap kursus ke salah satu kategori dari :["Tech & Coding","Business & Finance","Health & Fitness","Science & Engineering","Arts & Creativity"]
-    - Output hanya dalam Format JSON 
-    -  "courses": [
+    - **Hasilkan kursus dalam format JSON valid**
+    - **Gunakan tanda kutip ganda ("") untuk semua kunci dan string**
+    - **Tidak ada komentar, tidak ada teks tambahan di luar JSON**
+    - **Mulai dengan { "courses": [ ... ] }**
+    - **BATASI JUMLAH KARAKTER SEBANYAK 8000 KARAKTER SAJA. TIDAK LEBIH DARI 7500 KARAKTER**
+    - Contoh output:
+        "courses": [
           {
-            "courseTitle": '<Intro to Python>',
-            "description": '',
+            "courseTitle": "Intro to Python",
+            "description": "Deskripsi kursus...",
             "banner_image": "/banner1.png",
-            "category":"",
+            "category": "Tech & Coding",
             "chapters": [
               {
-                chapterName: '',
-                content: [
+                "chapterName": "Dasar Python",
+                "content": [
                   {
-                    topic: '<Nama topik dalam 2 hingga 4 dunia cth. (Membuat Variabel)>'
-                    explain: '<Penjelasan Rinci dalam 6 hingga 8 baris jika diperlukan>',
-                    code: '<Contoh kode yang diperlukan jika tidak null>',
-                    example: '<Contoh yang diperlukan jika tidak null>'
-                  },
-                  
-                    ...
-                  
+                    "topic": "Membuat Variabel",
+                    "explain": "Penjelasan tentang variabel...",
+                    "code": "x = 10",
+                    "example": "Misalnya, x dapat digunakan untuk menyimpan angka."
+                  }
                 ]
               }
             ],
-            quiz:[
+            "quiz": [
               {
-                question:'',
-                options:['a',b,c,d],
-                correctAns:''
+                "question": "Apa itu variabel?",
+                "options": ["Penyimpanan data", "Sebuah fungsi", "Tipe data", "Loop"],
+                "correctAns": "Penyimpanan data"
               }
             ],
-            flashcards:[
+            "flashcards": [
               {
-                front:'',
-                back:''
+                "front": "Apa itu variabel?",
+                "back": "Penyimpanan data dalam program."
               }
             ],
-            qa:[
+            "qa": [
               {
-                question:'',
-                answer:''
+                "question": "Apa itu Python?",
+                "answer": "Python adalah bahasa pemrograman yang mudah dipelajari."
               }
             ]
           }
         ]
+    - **Hanya JSON! Tidak ada teks lain sebelum atau sesudah output.**
     `,
 };

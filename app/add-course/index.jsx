@@ -27,7 +27,6 @@ export default function AddCourse() {
   const [topics, setTopics] = useState();
   const [selectedTopics, setSelectedTopics] = useState([]);
   const { userDetail, setUserDetail } = useContext(UserDetailContext);
-
   const router = useRouter();
 
   const onGenerateTopic = async () => {
@@ -66,11 +65,9 @@ export default function AddCourse() {
     try {
       const aiRes = await generateCourseAiModel.sendMessage(PROMPT);
 
-      const resp = JSON.parse(aiRes.response.text());
-      console.log("resp:", resp);
+      const textResponse = JSON.parse(aiRes.response.text());
 
-      const courses = resp.courses;
-      console.log("courses:", courses);
+      const courses = textResponse.courses;
 
       courses?.forEach(async (course) => {
         const docId = Date.now().toString();
@@ -82,19 +79,13 @@ export default function AddCourse() {
         });
       });
 
-      // for (const course of courses) {
-      //   const docId = Date.now().toString();
-      //   await setDoc(doc(db, "courses", docId), {
-      //     ...course,
-      //     createdOn: new Date(),
-      //     createdBy: userDetail.email,
-      //     docId: docId,
-      //   });
-      // }
-
       router.push("/(tabs)/home");
     } catch (error) {
       console.log("Error:", error.message);
+      ToastAndroid.show(
+        "Error generating course. Please try again!",
+        ToastAndroid.BOTTOM
+      );
     } finally {
       setLoading(false);
     }
@@ -103,7 +94,8 @@ export default function AddCourse() {
   return (
     <View
       style={{
-        padding: 25,
+        paddingHorizontal: 25,
+        paddingTop: 25,
         backgroundColor: Colors.WHITE,
         flex: 1,
       }}

@@ -53,6 +53,9 @@ export default function Quiz() {
         pathname: "/quiz/summary",
         params: {
           quizResultParam: JSON.stringify(result),
+          quizDocId: course?.docId,
+          quizQuiz: course?.quiz,
+          quizCourseTitle: course?.courseTitle,
         },
       });
     } catch (error) {
