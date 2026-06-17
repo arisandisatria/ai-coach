@@ -19,7 +19,7 @@ export default function Progress() {
     setCourseList([]);
     const q = query(
       collection(db, "courses"),
-      where("createdBy", "==", userDetail?.email)
+      where("createdBy", "==", userDetail?.email),
     );
     const querySnapshot = await getDocs(q);
     querySnapshot.forEach((doc) => {
@@ -34,13 +34,20 @@ export default function Progress() {
       data={[]}
       ListHeaderComponent={
         <View>
-          <View style={{ width: "100%", position: "relative", padding: 20 }}>
+          <View
+            style={{
+              width: "100%",
+              position: "relative",
+              padding: 20,
+              marginTop: 20,
+            }}
+          >
             <Text
               style={{
                 fontFamily: "outfit-bold",
-                fontSize: 25,
+                fontSize: 18,
                 color: Colors.BLACK,
-                marginBottom: 20,
+                marginBottom: 15,
                 textAlign: "center",
               }}
             >

@@ -15,7 +15,7 @@ export default function Chapters({ course }) {
 
   const isChapterCompleted = (index) => {
     const isCompletedChapter = course?.completedChapter?.find(
-      (item) => item == index
+      (item) => item == index,
     );
     return isCompletedChapter ? true : false;
   };
@@ -24,11 +24,11 @@ export default function Chapters({ course }) {
     <View
       style={{
         paddingHorizontal: 20,
-        marginTop: 15,
+        marginTop: 10,
         marginBottom: 25,
       }}
     >
-      <Text style={{ fontFamily: "outfit-bold", fontSize: 20 }}>Bab</Text>
+      <Text style={{ fontFamily: "outfit-bold", fontSize: 16 }}>Bab</Text>
 
       <FlatList
         data={course?.chapters}
@@ -86,6 +86,6 @@ export default function Chapters({ course }) {
 const styles = StyleSheet.create({
   chapterText: {
     fontFamily: "outfit",
-    fontSize: 14,
+    fontSize: 12,
   },
 });

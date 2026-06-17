@@ -18,13 +18,13 @@ export default function CourseList({ courseList, heading = "Materi" }) {
   return (
     <View
       style={{
-        marginTop: 15,
+        marginTop: 10,
       }}
     >
       <Text
         style={{
           fontFamily: "outfit-bold",
-          fontSize: 20,
+          fontSize: 16,
         }}
       >
         {heading}
@@ -65,7 +65,7 @@ export default function CourseList({ courseList, heading = "Materi" }) {
               <Text
                 style={{
                   fontFamily: "outfit-bold",
-                  fontSize: 14,
+                  fontSize: 12,
                   marginTop: 6,
                   color: Colors.WHITE,
                 }}
@@ -81,10 +81,11 @@ export default function CourseList({ courseList, heading = "Materi" }) {
                   marginTop: 4,
                 }}
               >
-                <Ionicons name="book-outline" size={20} color={Colors.WHITE} />
+                <Ionicons name="book-outline" size={12} color={Colors.WHITE} />
                 <Text
                   style={{
                     fontFamily: "outfit",
+                    fontSize: 10,
                     color: Colors.WHITE,
                   }}
                 >

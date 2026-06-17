@@ -22,7 +22,7 @@ export default function Header() {
         <Text
           style={{
             fontFamily: "outfit-bold",
-            fontSize: 25,
+            fontSize: 18,
             color: Colors.BLACK,
           }}
         >
@@ -31,7 +31,7 @@ export default function Header() {
         <Text
           style={{
             fontFamily: "outfit",
-            fontSize: 14,
+            fontSize: 12,
             color: Colors.BLACK,
           }}
         >
@@ -39,7 +39,7 @@ export default function Header() {
         </Text>
       </View>
       <TouchableOpacity onPress={() => router.push("/(tabs)/profile")}>
-        <Ionicons name="settings-outline" size={32} color={Colors.BLACK} />
+        <Ionicons name="settings-outline" size={28} color={Colors.BLACK} />
       </TouchableOpacity>
     </View>
   );

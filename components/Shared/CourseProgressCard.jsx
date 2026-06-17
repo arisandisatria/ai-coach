@@ -53,7 +53,7 @@ export default function CourseProgressCard({ item, width }) {
             numberOfLines={2}
             style={{
               fontFamily: "outfit-bold",
-              fontSize: 16,
+              fontSize: 12,
               flexWrap: "wrap",
               color: Colors.WHITE,
             }}
@@ -68,11 +68,11 @@ export default function CourseProgressCard({ item, width }) {
               alignItems: "center",
             }}
           >
-            <Ionicons name="book-outline" size={16} color={Colors.WHITE} />
+            <Ionicons name="book-outline" size={12} color={Colors.WHITE} />
             <Text
               style={{
                 fontFamily: "outfit",
-                fontSize: 14,
+                fontSize: 10,
                 color: Colors.WHITE,
               }}
             >

@@ -13,7 +13,7 @@ export default function CourseProgress({ courseList }) {
       <Text
         style={{
           fontFamily: "outfit-bold",
-          fontSize: 20,
+          fontSize: 16,
           color: Colors.BLACK,
         }}
       >

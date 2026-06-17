@@ -26,7 +26,7 @@ export default function Home() {
       try {
         const q = query(
           collection(db, "courses"),
-          where("createdBy", "==", userDetail?.email)
+          where("createdBy", "==", userDetail?.email),
         );
         const querySnapshot = await getDocs(q);
         querySnapshot.forEach((doc) => {
@@ -44,6 +44,7 @@ export default function Home() {
     <FlatList
       data={[]}
       style={{ backgroundColor: Colors.WHITE, marginBottom: 50 }}
+      resizeMode="stretch"
       onRefresh={() => getCourseList()}
       refreshing={loading}
       ListHeaderComponent={
@@ -54,7 +55,8 @@ export default function Home() {
         >
           <View
             style={{
-              margin: 20,
+              padding: 20,
+              marginTop: 30,
               paddingTop: Platform.OS == "ios" || (Platform.OS == "web" && 45),
             }}
           >

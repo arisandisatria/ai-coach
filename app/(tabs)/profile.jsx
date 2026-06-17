@@ -25,6 +25,7 @@ export default function Profile() {
         alignItems: "center",
         padding: 25,
         gap: 20,
+        marginTop: 40,
       }}
     >
       <Image

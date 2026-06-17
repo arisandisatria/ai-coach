@@ -2,6 +2,7 @@ import { Stack } from "expo-router";
 import { useFonts } from "expo-font";
 import { UserDetailContext } from "./../context/userDetailContext";
 import { useState } from "react";
+import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 
 export default function RootLayout() {
   useFonts({
@@ -12,12 +13,19 @@ export default function RootLayout() {
   const [userDetail, setUserDetail] = useState();
 
   return (
-    <UserDetailContext.Provider value={{ userDetail, setUserDetail }}>
-      <Stack
-        screenOptions={{
-          headerShown: false,
-        }}
-      ></Stack>
-    </UserDetailContext.Provider>
+    <SafeAreaProvider>
+      <SafeAreaView
+        style={{ flex: 1, backgroundColor: "#0f172a" }}
+        edges={["bottom"]}
+      >
+        <UserDetailContext.Provider value={{ userDetail, setUserDetail }}>
+          <Stack
+            screenOptions={{
+              headerShown: false,
+            }}
+          ></Stack>
+        </UserDetailContext.Provider>
+      </SafeAreaView>
+    </SafeAreaProvider>
   );
 }

@@ -13,6 +13,7 @@ export default function Intro({ course, enroll }) {
         onPress={() => router.back()}
         style={{
           position: "absolute",
+          marginTop: 40,
           margin: 20,
           zIndex: 2,
         }}
@@ -26,8 +27,8 @@ export default function Intro({ course, enroll }) {
           height: 280,
         }}
       />
-      <View style={{ paddingHorizontal: 20, marginTop: 20 }}>
-        <Text style={{ fontFamily: "outfit-bold", fontSize: 20 }}>
+      <View style={{ paddingHorizontal: 20, marginTop: 15 }}>
+        <Text style={{ fontFamily: "outfit-bold", fontSize: 16 }}>
           {course?.courseTitle}
         </Text>
         <View
@@ -39,11 +40,11 @@ export default function Intro({ course, enroll }) {
             marginTop: 5,
           }}
         >
-          <Ionicons name="book-outline" size={20} color={Colors.PRIMARY} />
+          <Ionicons name="book-outline" size={14} color={Colors.PRIMARY} />
           <Text
             style={{
               fontFamily: "outfit",
-              fontSize: 14,
+              fontSize: 12,
               color: Colors.PRIMARY,
             }}
           >
@@ -51,14 +52,14 @@ export default function Intro({ course, enroll }) {
           </Text>
         </View>
         <Text
-          style={{ fontFamily: "outfit-bold", fontSize: 18, marginTop: 10 }}
+          style={{ fontFamily: "outfit-bold", fontSize: 16, marginTop: 10 }}
         >
           Deskripsi
         </Text>
         <Text
           style={{
             fontFamily: "outfit",
-            fontSize: 14,
+            fontSize: 12,
             color: Colors.GRAY,
             textAlign: "justify",
           }}

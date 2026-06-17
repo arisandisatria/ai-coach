@@ -1,6 +1,5 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
 import { initializeAuth, getReactNativePersistence } from "firebase/auth";
 import ReactNativeAsyncStorage from "@react-native-async-storage/async-storage";
 import { getFirestore } from "firebase/firestore";
@@ -18,6 +17,15 @@ const firebaseConfig = {
   appId: "1:616314546042:web:bb67f3a91502b0096498c3",
   measurementId: "G-CDQCN1VQJE",
 };
+
+// const firebaseConfig = {
+//   apiKey: process.env.EXPO_PUBLIC_FIREBASE_API_KEY,
+//   authDomain: "ai-coach-c5456.firebaseapp.com",
+//   projectId: "ai-coach-c5456",
+//   storageBucket: "ai-coach-c5456.appspot.com",
+//   messagingSenderId: "1234567890",
+//   appId: "1:12345:web:12345",
+// };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);

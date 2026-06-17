@@ -10,13 +10,13 @@ export default function PracticeSection() {
   return (
     <View
       style={{
-        marginTop: 15,
+        marginTop: 10,
       }}
     >
       <Text
         style={{
           fontFamily: "outfit-bold",
-          fontSize: 20,
+          fontSize: 16,
         }}
       >
         Latihan
@@ -50,7 +50,7 @@ export default function PracticeSection() {
                   position: "absolute",
                   padding: 10,
                   fontFamily: "outfit",
-                  fontSize: 12,
+                  fontSize: 10,
                   color: Colors.WHITE,
                 }}
               >

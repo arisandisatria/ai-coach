@@ -32,7 +32,7 @@ export default function Button({
           style={{
             textAlign: "center",
             fontFamily: "outfit",
-            fontSize: 18,
+            fontSize: 16,
             color: type == "fill" ? Colors.WHITE : Colors.PRIMARY,
           }}
         >

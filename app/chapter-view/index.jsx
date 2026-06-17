@@ -30,6 +30,7 @@ export default function ChapterView() {
   return (
     <View
       style={{
+        marginTop: 40,
         padding: 25,
         backgroundColor: Colors.WHITE,
         flex: 1,
@@ -44,15 +45,15 @@ export default function ChapterView() {
         showsVerticalScrollIndicator={false}
         style={{ marginTop: 20 }}
       >
-        <Text style={{ fontFamily: "outfit-bold", fontSize: 18 }}>
+        <Text style={{ fontFamily: "outfit-bold", fontSize: 16 }}>
           {chapters?.content[currentPage]?.topic}
         </Text>
         <Text
           style={{
             fontFamily: "outfit",
-            fontSize: 14,
+            fontSize: 12,
             marginTop: 7,
-            textAlign: "justify",
+            textAlign: "left",
           }}
         >
           {chapters?.content[currentPage]?.explain}
@@ -113,20 +114,21 @@ export default function ChapterView() {
       <View
         style={{
           position: "relative",
-          width: "50%",
+          width: "100%",
         }}
       >
         <View
           style={{
             display: "flex",
             flexDirection: "row",
-            justifyContent: "space-evenly",
+            justifyContent: "flex-end",
             width: "100%",
             gap: 5,
           }}
         >
           {currentPage > 0 && (
             <Button
+              style={{ flex: 1 }}
               type="outline"
               text={"Sebelumnya"}
               onPress={() => setCurrentPage(currentPage - 1)}
@@ -134,11 +136,18 @@ export default function ChapterView() {
           )}
           {chapters?.content?.length - 1 != currentPage ? (
             <Button
+              style={
+                currentPage > 0 ? { flex: 1 } : { width: "auto", minWidth: 120 }
+              }
               text={"Selanjutnya"}
               onPress={() => setCurrentPage(currentPage + 1)}
             />
           ) : (
             <Button
+              style={{
+                minWidth: 120,
+                flex: currentPage > 0 ? 1 : 0,
+              }}
               text={"Selesai"}
               onPress={() => onChapterCompleted()}
               loading={loading}
@@ -156,6 +165,6 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.BG_GRAY,
     borderRadius: 15,
     fontFamily: "outfit",
-    fontSize: 14,
+    fontSize: 12,
   },
 });

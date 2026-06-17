@@ -13,6 +13,8 @@ import { auth, db } from "./../config/firebaseConfig";
 import { doc, getDoc } from "firebase/firestore";
 import { useContext, useEffect } from "react";
 import { UserDetailContext } from "@/context/userDetailContext";
+import { StatusBar } from "expo-status-bar";
+import { NavigationBar } from "expo-navigation-bar";
 
 export default function Index() {
   const router = useRouter();
@@ -26,7 +28,7 @@ export default function Index() {
 
     const backHandler = BackHandler.addEventListener(
       "hardwareBackPress",
-      handleBackPress
+      handleBackPress,
     );
 
     const unAuth = onAuthStateChanged(auth, async (user) => {
@@ -49,7 +51,10 @@ export default function Index() {
         flex: 1,
         backgroundColor: Colors.WHITE,
       }}
+      resizeMode="cover"
     >
+      {/* <StatusBar style="light" backgroundColor="#1e293b" /> */}
+      <NavigationBar hidden />
       <Image
         style={{
           width: "100%",
@@ -58,7 +63,6 @@ export default function Index() {
         }}
         source={require("./../assets/images/landing.png")}
       />
-
       <View
         style={{
           padding: 25,

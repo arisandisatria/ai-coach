@@ -36,12 +36,12 @@ export default function PracticeTypeHomeScreen() {
       const q = query(
         collection(db, "courses"),
         where("createdBy", "==", userDetail.email),
-        orderBy("createdOn", "desc")
+        orderBy("createdOn", "desc"),
       );
 
       const querySnapshot = await getDocs(q);
       querySnapshot.forEach((doc) =>
-        setCourseList((prev) => [...prev, doc.data()])
+        setCourseList((prev) => [...prev, doc.data()]),
       );
       setLoading(false);
     } catch (error) {
@@ -61,6 +61,7 @@ export default function PracticeTypeHomeScreen() {
             style={{
               position: "absolute",
               padding: 25,
+              marginTop: 20,
               display: "flex",
               flexDirection: "row",
               gap: 10,
@@ -70,7 +71,7 @@ export default function PracticeTypeHomeScreen() {
             <Pressable onPress={() => router.back()}>
               <Ionicons
                 name="arrow-back"
-                size={24}
+                size={18}
                 color="black"
                 style={{
                   backgroundColor: Colors.WHITE,
@@ -82,7 +83,7 @@ export default function PracticeTypeHomeScreen() {
             <Text
               style={{
                 fontFamily: "outfit-bold",
-                fontSize: 24,
+                fontSize: 18,
                 color: Colors.WHITE,
               }}
             >
