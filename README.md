@@ -94,7 +94,7 @@ Ikuti langkah-langkah berikut untuk menjalankan proyek ini di komputer lokal kam
 
 Bagi kamu yang ingin mencoba langsung aplikasi **AI Coach** tanpa perlu melakukan instalasi kode di atas, kamu bisa langsung mengunduh file mentahan Android mentah (`.apk`) melalui tautan di bawah ini:
 
-👉 **[Download AI Coach v1.0.0 APK](https://link_menuju_google_drive_atau_github_releases_kamu.com)**
+👉 **[Download AI Coach v1.0.0 APK](https://drive.google.com/drive/folders/1OoNPjwOegMQQnmDnC4NsNev2KczUk4sy?usp=drive_link)**
 
 > *Catatan: Karena aplikasi ini tidak diunduh via Play Store, pastikan kamu mengaktifkan izin "Install dari Sumber Tidak Dikenal" (*Unknown Sources*) pada pengaturan keamanan HP Android-mu saat menginstal.*
 
