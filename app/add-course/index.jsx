@@ -84,7 +84,7 @@ export default function AddCourse() {
       console.log("Error:", error.message);
       ToastAndroid.show(
         "Error generating course. Please try again!",
-        ToastAndroid.BOTTOM
+        ToastAndroid.BOTTOM,
       );
     } finally {
       setLoading(false);
@@ -95,7 +95,8 @@ export default function AddCourse() {
     <View
       style={{
         paddingHorizontal: 25,
-        paddingTop: 25,
+        paddingTop: 20,
+        marginTop: 25,
         backgroundColor: Colors.WHITE,
         flex: 1,
       }}
@@ -104,7 +105,7 @@ export default function AddCourse() {
         <Text
           style={{
             fontFamily: "outfit-bold",
-            fontSize: 30,
+            fontSize: 20,
           }}
         >
           Buat Materi Baru
@@ -112,7 +113,7 @@ export default function AddCourse() {
         <Text
           style={{
             fontFamily: "outfit",
-            fontSize: 16,
+            fontSize: 14,
           }}
         >
           Apa yang mau kamu pelajari hari ini?
@@ -122,7 +123,7 @@ export default function AddCourse() {
           style={{
             fontFamily: "outfit",
             fontSize: 12,
-            marginTop: 8,
+            marginTop: 6,
             color: Colors.GRAY,
           }}
         >
@@ -132,7 +133,7 @@ export default function AddCourse() {
 
         <TextInput
           onChangeText={(value) => setUserInput(value)}
-          placeholder="Learn Python, Learn React, etc..."
+          placeholder="Kingdom fungi, vocabulary, kalkulus, dll."
           style={styles.textInput}
           multiline={true}
           numberOfLines={3}
@@ -158,11 +159,11 @@ export default function AddCourse() {
             <Text
               style={{
                 fontFamily: "outfit",
-                fontSize: 16,
+                fontSize: 14,
                 marginVertical: 4,
               }}
             >
-              Pilih topik yang akan ditambahkan ke materi
+              Pilih topik yang akan ditambahkan ke materi:
             </Text>
           )}
           {topics?.map((topic, index) => (
@@ -207,12 +208,12 @@ export default function AddCourse() {
 
 const styles = StyleSheet.create({
   textInput: {
-    padding: 15,
+    padding: 10,
     borderWidth: 1,
     borderRadius: 15,
-    height: 100,
+    height: 80,
     marginTop: 10,
     alignItems: "flex-start",
-    fontSize: 16,
+    fontSize: 14,
   },
 });
