@@ -26,6 +26,14 @@ Baik kamu ingin belajar pemrograman, sejarah dunia, memasak, hingga persiapan uj
 
 ---
 
+## 📱 Demo Aplikasi
+
+<p align="center">
+  <img src="./assets/demo.gif" alt="AI Coach Demo" width="320" />
+</p>
+
+---
+
 ## 🚀 Fitur Utama
 
 * **🔍 Custom Topic Discovery:** Masukkan topik apa pun yang ingin kamu pelajari tanpa batasan kaku.
