@@ -27,14 +27,21 @@ export default function FlashCards() {
 
   const onScroll = (event) => {
     const index = Math.round(
-      event?.nativeEvent?.contentOffset.x / Dimensions.get("screen").width
+      event?.nativeEvent?.contentOffset.x / Dimensions.get("screen").width,
     );
     setCurrentPage(index);
   };
 
   return (
     <View style={{ backgroundColor: Colors.WHITE, flex: 1 }}>
-      <View style={{ position: "absolute", width: "100%", padding: 25 }}>
+      <View
+        style={{
+          position: "absolute",
+          width: "100%",
+          padding: 25,
+          marginTop: 20,
+        }}
+      >
         <View
           style={{
             display: "flex",
@@ -49,7 +56,7 @@ export default function FlashCards() {
           <Text
             style={{
               fontFamily: "outfit-bold",
-              fontSize: 18,
+              fontSize: 16,
               color: Colors.PRIMARY,
             }}
           >

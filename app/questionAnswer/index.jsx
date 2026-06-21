@@ -27,6 +27,7 @@ export default function QuestionAnswer() {
               position: "relative",
               width: "100%",
               padding: 20,
+              marginTop: 20,
             }}
           >
             <View
@@ -34,16 +35,16 @@ export default function QuestionAnswer() {
                 display: "flex",
                 flexDirection: "row",
                 alignItems: "center",
-                gap: 20,
+                gap: 15,
               }}
             >
               <Pressable onPress={() => router.back()}>
-                <Ionicons name="arrow-back" size={30} color={Colors.PRIMARY} />
+                <Ionicons name="arrow-back" size={24} color={Colors.PRIMARY} />
               </Pressable>
               <Text
                 style={{
                   fontFamily: "outfit-bold",
-                  fontSize: 28,
+                  fontSize: 16,
                   textAlign: "center",
                   color: Colors.PRIMARY,
                 }}
@@ -55,8 +56,9 @@ export default function QuestionAnswer() {
               style={{
                 fontFamily: "outfit",
                 color: Colors.PRIMARY,
-                fontSize: 18,
-                marginVertical: 10,
+                fontSize: 16,
+                marginVertical: 5,
+                marginTop: 20,
               }}
             >
               {course?.courseTitle}
@@ -69,7 +71,7 @@ export default function QuestionAnswer() {
                   style={styles.card}
                   onPress={() => onQuestionSelect(index)}
                 >
-                  <Text style={{ fontFamily: "outfit-bold", fontSize: 16 }}>
+                  <Text style={{ fontFamily: "outfit-bold", fontSize: 14 }}>
                     {item?.question}
                   </Text>
                   {selectedQuestion == index && (

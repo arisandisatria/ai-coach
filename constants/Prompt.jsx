@@ -8,7 +8,21 @@ export default {
     - Output akan berupa ARRAY String dalam FORMAT JSON saja
     - Jangan menambahkan teks biasa apa pun dalam output
     `,
-  // - Chapter Explain in HTML Form, (Code example if required), add line break if required
+
+  RE_QUIZ(quiz, title) {
+    return dedent`
+    - Buatkan 10 quiz yang berbeda daripada ${quiz}
+    - Buat pertanyaan tersebut berdasarkan judul ${title}
+    - Buat juga 4 opsi jawaban yang berbeda
+    - Hasilkan outputnya seperti contoh ini: "quiz": [
+              {
+                "question": "Apa itu variabel?",
+                "options": ["Penyimpanan data", "Sebuah fungsi", "Tipe data", "Loop"],
+                "correctAns": "Penyimpanan data"
+              }
+            ],
+    `;
+  },
   COURSE: dedent`: Anda sebagai pengajar terbaik
     - Pengguna ingin mempelajari semua topik
     - Hasilkan kursus dengan nama kursus, deskripsi, dan 5/7 bab di setiap kursus

@@ -7,6 +7,7 @@ import Button from "../../components/Shared/Button";
 import { generateNewQuizAiModel } from "../../config/AiModel";
 import { arrayUnion, doc, updateDoc } from "firebase/firestore";
 import { db } from "../../config/firebaseConfig";
+import Prompt from "../../constants/Prompt";
 
 export default function QuizSummary() {
   const { quizResultParam, quizDocId, quizQuiz, quizCourseTitle } =
@@ -25,7 +26,7 @@ export default function QuizSummary() {
     const correctAns =
       quizResult &&
       Object.entries(quizResult)?.filter(
-        ([key, value]) => value?.isCorrect == true
+        ([key, value]) => value?.isCorrect == true,
       );
     const totalQuest = Object.keys(quizResult).length;
 
@@ -37,20 +38,10 @@ export default function QuizSummary() {
     return ((correctAns / totalQuestion) * 100).toFixed(0);
   };
 
+  console.log(quizDocId);
   const regenerateQuiz = async () => {
     setLoading(true);
-    const PROMPT = dedent`
-    - Buatkan 10 quiz yang berbeda daripada ${quizQuiz}
-    - Buat pertanyaan tersebut berdasarkan judul ${quizCourseTitle}
-    - Buat juga 4 opsi jawaban yang berbeda
-    - Hasilkan outputnya seperti contoh ini: "quiz": [
-              {
-                "question": "Apa itu variabel?",
-                "options": ["Penyimpanan data", "Sebuah fungsi", "Tipe data", "Loop"],
-                "correctAns": "Penyimpanan data"
-              }
-            ],
-    `;
+    const PROMPT = Prompt.RE_QUIZ(quizQuiz, quizCourseTitle);
 
     try {
       const regenQuiz = await generateNewQuizAiModel.sendMessage(PROMPT);
@@ -82,13 +73,14 @@ export default function QuizSummary() {
               position: "relative",
               width: "100%",
               padding: 35,
+              marginTop: 25,
             }}
           >
             <Text
               style={{
                 textAlign: "center",
                 fontFamily: "outfit-bold",
-                fontSize: 25,
+                fontSize: 24,
                 color: Colors.BLACK,
               }}
             >
@@ -99,7 +91,7 @@ export default function QuizSummary() {
                 backgroundColor: Colors.PRIMARY,
                 padding: 20,
                 borderRadius: 20,
-                marginTop: 60,
+                marginTop: 40,
                 display: "flex",
                 alignItems: "center",
                 elevation: 4,
@@ -116,7 +108,7 @@ export default function QuizSummary() {
               <Text
                 style={{
                   fontFamily: "outfit-bold",
-                  fontSize: 24,
+                  fontSize: 20,
                   color: Colors.WHITE,
                 }}
               >
@@ -125,7 +117,7 @@ export default function QuizSummary() {
               <Text
                 style={{
                   fontFamily: "outfit",
-                  fontSize: 16,
+                  fontSize: 12,
                   color: Colors.WHITE,
                 }}
               >
@@ -166,8 +158,8 @@ export default function QuizSummary() {
               onPress={() => regenerateQuiz()}
             />
 
-            <View style={{ marginTop: 25, flex: 1 }}>
-              <Text style={{ fontFamily: "outfit-bold", fontSize: 22 }}>
+            <View style={{ marginTop: 20, flex: 1 }}>
+              <Text style={{ fontFamily: "outfit-bold", fontSize: 18 }}>
                 Ringkasan
               </Text>
               <FlatList
@@ -212,7 +204,7 @@ export default function QuizSummary() {
 const styles = StyleSheet.create({
   resultText: {
     fontFamily: "outfit",
-    fontSize: 20,
+    fontSize: 18,
     color: Colors.WHITE,
   },
 });
