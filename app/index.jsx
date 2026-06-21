@@ -13,7 +13,6 @@ import { auth, db } from "./../config/firebaseConfig";
 import { doc, getDoc } from "firebase/firestore";
 import { useContext, useEffect } from "react";
 import { UserDetailContext } from "@/context/userDetailContext";
-import { StatusBar } from "expo-status-bar";
 import { NavigationBar } from "expo-navigation-bar";
 
 export default function Index() {
@@ -53,7 +52,6 @@ export default function Index() {
       }}
       resizeMode="cover"
     >
-      {/* <StatusBar style="light" backgroundColor="#1e293b" /> */}
       <NavigationBar hidden />
       <Image
         style={{
